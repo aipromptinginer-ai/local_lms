@@ -173,3 +173,7 @@
     color: #dee2e6;
     margin-bottom: 0.5rem;
 }
+
+.student-header .navbar-text {
+    color: #fff;
+}

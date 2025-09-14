@@ -12,17 +12,17 @@ const Admin = {
     return `
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid align-items-center">
-          <a class="navbar-brand" href="#">Администрирование</a>
+          <a class="navbar-brand" href="#"><i class="bi bi-sliders me-2"></i>Администрирование</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto align-items-center">
               <li class="nav-item">
-                <span class="navbar-text me-3">Администратор</span>
+                <span class="navbar-text me-3"><i class="bi bi-person-circle me-2"></i>Администратор</span>
               </li>
               <li class="nav-item">
-                <button class="btn btn-light" onclick="event.preventDefault(); Core.switchUser()">Выйти</button>
+                <button class="btn btn-light" onclick="event.preventDefault(); Core.switchUser()"><i class="bi bi-box-arrow-right me-2"></i>Выйти</button>
               </li>
             </ul>
           </div>

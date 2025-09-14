@@ -78,20 +78,21 @@ const Core = {
   // Рендер для студента
   renderStudentView() {
     const header = document.getElementById('main-header');
+    header.classList.add('student-header');
     
     // Рендер шапки для студента
     header.innerHTML = `
-      <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#" onclick="event.preventDefault(); Core.setView('home');">Платформа обучения</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid align-items-center">
+          <a class="navbar-brand" href="#" onclick="event.preventDefault(); Core.setView('home');"><i class="bi bi-mortarboard-fill me-2"></i>Платформа обучения</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              ${this.state.currentUser ? `<li class="nav-item"><span class="navbar-text me-3">${this.state.currentUser.name}</span></li>` : ''}
-              ${this.state.isAdmin ? `<li class="nav-item"><button class="btn btn-outline-secondary me-2" onclick="event.preventDefault(); Core.toggleAdminMode()">В админку</button></li>` : ''}
-              <li class="nav-item"><button class="btn btn-secondary" onclick="event.preventDefault(); Core.switchUser()">Выйти</button></li>
+            <ul class="navbar-nav ms-auto align-items-center">
+              ${this.state.currentUser ? `<li class="nav-item"><span class="navbar-text me-3"><i class="bi bi-person-circle me-2"></i>${this.state.currentUser.name}</span></li>` : ''}
+              ${this.state.isAdmin ? `<li class="nav-item"><button class="btn btn-outline-light me-2" onclick="event.preventDefault(); Core.toggleAdminMode()"><i class="bi bi-sliders me-2"></i>В админку</button></li>` : ''}
+              <li class="nav-item"><button class="btn btn-light" onclick="event.preventDefault(); Core.switchUser()"><i class="bi bi-box-arrow-right me-2"></i>Выйти</button></li>
             </ul>
           </div>
         </div>
@@ -139,13 +140,13 @@ const Core = {
 
     app.innerHTML = `
       <div class="d-flex justify-content-center align-items-center vh-100">
-        <div class="card text-center" style="width: 25rem;">
+        <div class="card text-center shadow" style="width: 25rem;">
           <div class="card-body p-5">
-            <h2 class="card-title mb-3">Добро пожаловать</h2>
+            <h2 class="card-title mb-3"><i class="bi bi-person-workspace me-2"></i>Подготовка персонала</h2>
             <p class="card-text text-muted mb-4">Выберите вашу роль для входа в систему.</p>
             <div class="d-grid gap-3">
-              <button class="btn btn-primary btn-lg" onclick="Core.setView('register')"><i class="bi bi-person-fill me-2"></i>Я — обучаемый</button>
-              <button class="btn btn-secondary btn-lg" onclick="Core.renderAdminLogin()"><i class="bi bi-shield-lock-fill me-2"></i>Я — администратор</button>
+              <button class="btn btn-primary btn-lg d-flex align-items-center" onclick="Core.setView('register')"><i class="bi bi-person-fill"></i><span class="flex-grow-1 text-center">Я — обучаемый</span></button>
+              <button class="btn btn-secondary btn-lg d-flex align-items-center" onclick="Core.renderAdminLogin()"><i class="bi bi-shield-lock-fill"></i><span class="flex-grow-1 text-center">Я — администратор</span></button>
             </div>
           </div>
         </div>
@@ -310,7 +311,7 @@ const Core = {
     let html = `
       <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
-          <h2>${course.title}</h2>
+          <h2><i class="bi bi-journal-text me-2"></i>${course.title}</h2>
           <p class="lead text-muted">Список уроков</p>
         </div>
         <a href="#" class="btn btn-secondary" onclick="event.preventDefault(); Core.setView('home')">← Назад к курсам</a>
@@ -327,7 +328,7 @@ const Core = {
       html += `
         <li class="list-group-item d-flex justify-content-between align-items-center ${isLocked ? 'list-group-item-light text-muted' : ''}" ${isLocked ? 'aria-disabled="true"' : ''}>
           <div>
-            <h5 class="mb-1"><i class="bi ${isCompleted ? 'bi-check-circle-fill text-success' : 'bi-circle'} me-2"></i>${index + 1}. ${lesson.title}</h5>
+            <h5 class="mb-1"><i class="bi ${isCompleted ? 'bi-check-circle-fill text-success' : 'bi-file-text'} me-2"></i>${index + 1}. ${lesson.title}</h5>
             <small>${isCompleted ? '✅ Пройдено' : 'Не пройдено'}</small>
           </div>
           <a 
