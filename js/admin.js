@@ -8,6 +8,29 @@ const Admin = {
   },
   app: null,
 
+  renderHeader() {
+    return `
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid align-items-center">
+          <a class="navbar-brand" href="#">Администрирование</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-center">
+              <li class="nav-item">
+                <span class="navbar-text me-3">Администратор</span>
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-light" onclick="event.preventDefault(); Core.switchUser()">Выйти</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    `;
+  },
+
   render() {
     if (!Core.state.isAdmin) {
       alert('Доступ запрещен.');
@@ -18,22 +41,12 @@ const Admin = {
     const header = document.getElementById('main-header');
     
     // Рендерим шапку админки с помощью Bootstrap Navbar
-    header.innerHTML = `
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Администрирование</a>
-          <div class="d-flex">
-            <span class="navbar-text me-3">${Core.state.currentUser.name}</span>
-            <button class="btn btn-outline-light" onclick="event.preventDefault(); Core.toggleAdminMode()">К платформе</button>
-            <button class="btn btn-secondary ms-2" onclick="event.preventDefault(); Core.switchUser()">Выйти</button>
-          </div>
-        </div>
-      </nav>
-    `;
+    header.innerHTML = this.renderHeader();
+    header.classList.add('admin-header');
 
     // Рендерим основную часть админки
     let html = `
-      <ul class="nav nav-pills mb-3">
+      <ul class="nav nav-pills mb-3 mt-4">
         <li class="nav-item">
           <a class="nav-link ${this.state.currentTab === 'dashboard' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('dashboard')">Дашборд</a>
         </li>

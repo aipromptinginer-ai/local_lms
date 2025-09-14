@@ -17,47 +17,47 @@ const AdminDashboard = {
     let html = `
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
         <div class="col">
-          <div class="card h-100 shadow-sm dashboard-card">
+          <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
                   <h3>Пользователи</h3>
                   <p>Всего зарегистрировано</p>
               </hgroup>
+              <div class="stat-number">${users.length}</div>
             </div>
-            <div class="stat-number">${users.length}</div>
           </div>
         </div>
         <div class="col">
-          <div class="card h-100 shadow-sm dashboard-card">
+          <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
                   <h3>Курсы</h3>
                   <p>Всего создано</p>
               </hgroup>
+              <div class="stat-number">${courses.length}</div>
             </div>
-            <div class="stat-number">${courses.length}</div>
           </div>
         </div>
         <div class="col">
-          <div class="card h-100 shadow-sm dashboard-card">
+          <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
                   <h3>Уроки</h3>
                   <p>Всего в системе</p>
               </hgroup>
+              <div class="stat-number">${lessons.length}</div>
             </div>
-            <div class="stat-number">${lessons.length}</div>
           </div>
         </div>
         <div class="col">
-          <div class="card h-100 shadow-sm dashboard-card">
+          <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
                   <h3>Общий прогресс</h3>
                   <p>Процент прохождения</p>
               </hgroup>
+              <div class="stat-number">${overallProgress}%</div>
             </div>
-            <div class="stat-number">${overallProgress}%</div>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ const AdminDashboard = {
               <h3>Последние действия</h3>
               <p>Информация о последних действиях пользователей будет добавлена в будущем.</p>
           </hgroup>
-          <div class="d-flex align-items-center">
+          <div class="d-flex align-items-center" style="display: none !important;">
             <strong>Загрузка данных...</strong>
             <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
           </div>

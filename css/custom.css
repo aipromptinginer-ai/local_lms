@@ -12,10 +12,6 @@
 
 
 
-
-
-
-
 /* Lesson item in course view */
 .lesson-item-content {
     display: flex;
@@ -80,7 +76,6 @@
 
 
 
-
 .page-header hgroup {
     margin-bottom: 0;
 }
@@ -94,7 +89,6 @@
     grid-template-columns: 1fr 1fr;
     gap: 0.25rem 1rem;
 }
-
 
 
 
@@ -128,11 +122,48 @@
     font-size: 0.9rem;
 }
 .dashboard-card .stat-number {
-    font-size: 2.5rem;
-    line-height: 1;
+    font-size: 3rem;
+    font-weight: 600;
+    text-align: center;
 }
 
+.admin-header .navbar {
+    background-color: #212529;
+}
 
+.admin-header .navbar-brand, .admin-header .nav-link, .admin-header .btn-outline-light, .admin-header .navbar-text {
+    color: #fff;
+}
 
+.admin-header .nav-link.active {
+    font-weight: bold;
+}
 
+.admin-tabs {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
 
+.admin-tabs .nav-link {
+    color: #6c757d;
+    border-bottom: 2px solid transparent;
+}
+
+.admin-tabs .nav-link.active {
+    color: #0d6efd;
+    border-bottom-color: #0d6efd;
+}
+
+.dashboard-card .card-body {
+    justify-content: space-between;
+}
+
+.card-body hgroup {
+    margin-bottom: 1rem;
+}
+
+#app .card.mt-4 .card-body p {
+    color: #6c757d;
+    font-style: italic;
+}
