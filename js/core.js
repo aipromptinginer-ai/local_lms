@@ -144,8 +144,8 @@ const Core = {
             <h2 class="card-title mb-3">Добро пожаловать</h2>
             <p class="card-text text-muted mb-4">Выберите вашу роль для входа в систему.</p>
             <div class="d-grid gap-3">
-              <button class="btn btn-primary btn-lg" onclick="Core.setView('register')">Я — обучаемый</button>
-              <button class="btn btn-secondary btn-lg" onclick="Core.renderAdminLogin()">Я — администратор</button>
+              <button class="btn btn-primary btn-lg" onclick="Core.setView('register')"><i class="bi bi-person-fill me-2"></i>Я — обучаемый</button>
+              <button class="btn btn-secondary btn-lg" onclick="Core.renderAdminLogin()"><i class="bi bi-shield-lock-fill me-2"></i>Я — администратор</button>
             </div>
           </div>
         </div>
@@ -165,13 +165,13 @@ const Core = {
             </div>
             <h2 class="card-title mb-4 text-center">Вход для администратора</h2>
             <form id="adminLoginForm">
-              <div class="mb-3">
-                <label for="adminLogin" class="form-label">Логин</label>
-                <input type="text" class="form-control" id="adminLogin" name="adminLogin" required>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-person-circle"></i></span>
+                <input type="text" class="form-control" id="adminLogin" name="adminLogin" required placeholder="Логин">
               </div>
-              <div class="mb-3">
-                <label for="adminPassword" class="form-label">Пароль</label>
-                <input type="password" class="form-control" id="adminPassword" name="adminPassword" required>
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                <input type="password" class="form-control" id="adminPassword" name="adminPassword" required placeholder="Пароль">
               </div>
               <button type="submit" class="btn btn-primary w-100 mt-3">Войти</button>
             </form>
@@ -210,13 +210,13 @@ const Core = {
             <h2 class="card-title text-center mb-3">Регистрация</h2>
             <p class="card-text text-muted text-center mb-4">Пожалуйста, введите ваши данные для начала обучения.</p>
             <form id="userForm">
-              <div class="mb-3">
-                <label for="userName" class="form-label">ФИО *</label>
-                <input type="text" class="form-control" id="userName" name="userName" required placeholder="Иванов Иван Иванович">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
+                <input type="text" class="form-control" id="userName" name="userName" required placeholder="ФИО *">
               </div>
-              <div class="mb-3">
-                <label for="userDepartment" class="form-label">Отдел / Роль</label>
-                <input type="text" class="form-control" id="userDepartment" name="userDepartment" placeholder="Отдел безопасности">
+              <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-briefcase-fill"></i></span>
+                <input type="text" class="form-control" id="userDepartment" name="userDepartment" placeholder="Отдел / Роль">
               </div>
               <button type="submit" class="btn btn-primary w-100 mt-3">Начать обучение</button>
             </form>
@@ -276,7 +276,7 @@ const Core = {
           <div class="col">
             <div class="card h-100 shadow-sm">
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${course.title}</h5>
+                <h5 class="card-title"><i class="bi bi-book-fill me-2"></i>${course.title}</h5>
                 <p class="card-text text-muted flex-grow-1">${course.description || ''}</p>
                 <div class="progress mt-3" style="height: 5px;">
                   <div class="progress-bar" role="progressbar" style="width: ${percent}%;" aria-valuenow="${percent}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -285,7 +285,7 @@ const Core = {
               </div>
               <div class="card-footer bg-transparent border-0 p-3">
                 <a href="#" class="btn btn-primary w-100" onclick="event.preventDefault(); Core.setView('course', { currentCourseId: '${course.id}' })">
-                  ${percent === 100 ? 'Повторить' : 'Продолжить'}
+                  <i class="bi ${percent === 100 ? 'bi-arrow-clockwise' : 'bi-play-fill'} me-1"></i>${percent === 100 ? 'Повторить' : 'Продолжить'}
                 </a>
               </div>
             </div>
@@ -327,7 +327,7 @@ const Core = {
       html += `
         <li class="list-group-item d-flex justify-content-between align-items-center ${isLocked ? 'list-group-item-light text-muted' : ''}" ${isLocked ? 'aria-disabled="true"' : ''}>
           <div>
-            <h5 class="mb-1">${index + 1}. ${lesson.title}</h5>
+            <h5 class="mb-1"><i class="bi ${isCompleted ? 'bi-check-circle-fill text-success' : 'bi-circle'} me-2"></i>${index + 1}. ${lesson.title}</h5>
             <small>${isCompleted ? '✅ Пройдено' : 'Не пройдено'}</small>
           </div>
           <a 
@@ -336,7 +336,7 @@ const Core = {
             onclick="event.preventDefault(); if(!this.closest('li').hasAttribute('aria-disabled')) Core.setView('lesson', { currentCourseId: '${course.id}', currentLessonId: '${lesson.id}' })" 
             title="${isLocked ? 'Сначала пройдите предыдущий урок' : ''}"
           >
-            ${isCompleted ? 'Повторить' : 'Начать'}
+            <i class="bi ${isCompleted ? 'bi-arrow-clockwise' : 'bi-play-fill'} me-1"></i>${isCompleted ? 'Повторить' : 'Начать'}
           </a>
         </li>
       `;

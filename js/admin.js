@@ -48,16 +48,16 @@ const Admin = {
     let html = `
       <ul class="nav nav-pills mb-3 mt-4">
         <li class="nav-item">
-          <a class="nav-link ${this.state.currentTab === 'dashboard' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('dashboard')">Дашборд</a>
+          <a class="nav-link ${this.state.currentTab === 'dashboard' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('dashboard')"><i class="bi bi-grid-1x2-fill me-2"></i>Дашборд</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${this.state.currentTab === 'courses' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('courses')">Курсы</a>
+          <a class="nav-link ${this.state.currentTab === 'courses' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('courses')"><i class="bi bi-journal-bookmark-fill me-2"></i>Курсы</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${this.state.currentTab === 'quizzes' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('quizzes')">Тесты</a>
+          <a class="nav-link ${this.state.currentTab === 'quizzes' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('quizzes')"><i class="bi bi-patch-check-fill me-2"></i>Тесты</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link ${this.state.currentTab === 'reports' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('reports')">Отчёты</a>
+          <a class="nav-link ${this.state.currentTab === 'reports' ? 'active' : ''}" href="#" onclick="event.preventDefault(); Admin.setTab('reports')"><i class="bi bi-file-earmark-bar-graph-fill me-2"></i>Отчёты</a>
         </li>
       </ul>
       <div id="admin-content" class="card">

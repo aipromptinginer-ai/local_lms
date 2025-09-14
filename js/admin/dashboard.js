@@ -20,6 +20,7 @@ const AdminDashboard = {
           <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
+                  <i class="bi bi-people-fill dashboard-card-icon"></i>
                   <h3>Пользователи</h3>
                   <p>Всего зарегистрировано</p>
               </hgroup>
@@ -31,6 +32,7 @@ const AdminDashboard = {
           <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
+                  <i class="bi bi-journal-bookmark-fill dashboard-card-icon"></i>
                   <h3>Курсы</h3>
                   <p>Всего создано</p>
               </hgroup>
@@ -42,6 +44,7 @@ const AdminDashboard = {
           <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
+                  <i class="bi bi-book-fill dashboard-card-icon"></i>
                   <h3>Уроки</h3>
                   <p>Всего в системе</p>
               </hgroup>
@@ -53,6 +56,7 @@ const AdminDashboard = {
           <div class="card shadow-sm dashboard-card">
             <div class="card-body d-flex flex-column">
               <hgroup>
+                  <i class="bi bi-percent dashboard-card-icon"></i>
                   <h3>Общий прогресс</h3>
                   <p>Процент прохождения</p>
               </hgroup>

@@ -167,3 +167,9 @@
     color: #6c757d;
     font-style: italic;
 }
+
+.dashboard-card-icon {
+    font-size: 2.5rem;
+    color: #dee2e6;
+    margin-bottom: 0.5rem;
+}
