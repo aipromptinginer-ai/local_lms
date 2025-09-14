@@ -326,6 +326,19 @@ const Storage = {
     },
   
     // Генерация уникального ID
+    // Сохранение пользователя
+    saveUser(user) {
+      localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
+    },
+  
+    // Удаление пользователя и связанных данных
+    deleteUser(userId) {
+      localStorage.removeItem(`user_${userId}`);
+      localStorage.removeItem(`progress_${userId}`);
+      localStorage.removeItem(`quiz_results_${userId}`);
+    },
+
+    // Генерация уникального ID
     generateId(prefix = 'item') {
       return `${prefix}-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
     }

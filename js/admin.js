@@ -91,6 +91,9 @@ const Admin = {
     if (this.state.currentTab === 'quizzes') {
       AdminQuizzes.initEventListeners();
     }
+    if (this.state.currentTab === 'reports') {
+      AdminReports.initEventListeners();
+    }
   },
 
   setTab(tab) {

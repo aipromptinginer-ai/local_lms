@@ -197,10 +197,19 @@ const Core = {
     });
   },
 
-  // Экран регистрации пользователя
+  // Экран выбора пользователя
   renderUserRegistration() {
     this.state.currentView = 'register';
     const app = document.getElementById('app');
+    const users = Users.getAllUsers();
+
+    let userOptions = '';
+    if (users.length === 0) {
+      userOptions = '<option value="">Нет зарегистрированных пользователей</option>';
+    } else {
+      userOptions = users.map(user => `<option value="${user.id}">${user.name} (${user.department || 'Без отдела'})</option>`).join('');
+    }
+
     app.innerHTML = `
       <div class="d-flex justify-content-center align-items-center vh-100">
         <div class="card" style="width: 25rem;">
@@ -208,46 +217,45 @@ const Core = {
              <div class="text-start mb-4">
                 <a href="#" onclick="event.preventDefault(); Core.renderLoginScreen()" class="btn btn-sm btn-outline-secondary">← Назад</a>
             </div>
-            <h2 class="card-title text-center mb-3">Регистрация</h2>
-            <p class="card-text text-muted text-center mb-4">Пожалуйста, введите ваши данные для начала обучения.</p>
-            <form id="userForm">
-              <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-person-badge"></i></span>
-                <input type="text" class="form-control" id="userName" name="userName" required placeholder="ФИО *">
+            <h2 class="card-title text-center mb-3">Выбор пользователя</h2>
+            <p class="card-text text-muted text-center mb-4">Пожалуйста, выберите себя из списка, чтобы начать обучение.</p>
+            <form id="userSelectForm">
+              <div class="mb-3">
+                <label for="userSelect" class="form-label visually-hidden">Выберите пользователя</label>
+                <select class="form-select form-select-lg" id="userSelect" ${users.length === 0 ? 'disabled' : ''} required>
+                  <option value="">Выберите пользователя...</option>
+                  ${userOptions}
+                </select>
               </div>
-              <div class="input-group mb-3">
-                <span class="input-group-text"><i class="bi bi-briefcase-fill"></i></span>
-                <input type="text" class="form-control" id="userDepartment" name="userDepartment" placeholder="Отдел / Роль">
-              </div>
-              <button type="submit" class="btn btn-primary w-100 mt-3">Начать обучение</button>
+              <button type="submit" class="btn btn-primary w-100 mt-3" ${users.length === 0 ? 'disabled' : ''}>Начать обучение</button>
             </form>
           </div>
         </div>
       </div>
     `;
 
-    document.getElementById('userForm').addEventListener('submit', (e) => {
+    document.getElementById('userSelectForm').addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('userName').value.trim();
-      const department = document.getElementById('userDepartment').value.trim();
+      const selectedUserId = document.getElementById('userSelect').value;
 
-      if (!name) return;
+      if (!selectedUserId) {
+        alert('Пожалуйста, выберите пользователя.');
+        return;
+      }
 
-      const user = {
-        id: `user-${Date.now()}`,
-        name,
-        department,
-        registeredAt: Date.now()
-      };
+      const user = Users.getAllUsers().find(u => u.id === selectedUserId);
 
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      localStorage.setItem(`user_${user.id}`, JSON.stringify(user));
-      
-      this.state.currentUser = user;
-      this.state.isLoggedIn = true;
-      this.state.isAdmin = false;
-      this.state.isAdminMode = false;
-      this.setView('home');
+      if (user) {
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        
+        this.state.currentUser = user;
+        this.state.isLoggedIn = true;
+        this.state.isAdmin = false;
+        this.state.isAdminMode = false;
+        this.setView('home');
+      } else {
+        alert('Выбранный пользователь не найден.');
+      }
     });
   },
 
