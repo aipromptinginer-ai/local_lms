@@ -20,6 +20,7 @@ const Modals = {
 
     if (ext === 'pdf') {
       content = `<iframe src="${src}" style="width: 100%; height: 80vh; border: none;" frameborder="0"></iframe>`;
+      this.showModal(content, 'modal-pdf');
     } else {
       content = `
         <div style="text-align: center; padding: 2rem;">
@@ -27,9 +28,8 @@ const Modals = {
           <a href="${src}" download class="btn btn-primary">Скачать файл</a>
         </div>
       `;
+       this.showModal(content, 'modal-lg');
     }
-
-    this.showModal(content, 'modal-lg');
   },
 
   // Открыть видео
@@ -52,6 +52,7 @@ const Modals = {
         dialog.id = 'main-modal';
         document.body.appendChild(dialog);
     }
+    dialog.className = sizeClass;
 
     dialog.innerHTML = `
       <div class="modal-dialog ${sizeClass}">

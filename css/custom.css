@@ -177,3 +177,8 @@
 .student-header .navbar-text {
     color: #fff;
 }
+
+dialog.modal-pdf {
+    width: 90vw;
+    max-width: 90vw;
+}
