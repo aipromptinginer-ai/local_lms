@@ -6,11 +6,26 @@
 const Modals = {
   // Открыть изображение
   openImage(src) {
-    this.showModal(`
-      <figure>
-        <img src="${src}" alt="Изображение">
-      </figure>
-    `, 'modal-lg');
+    const img = new Image();
+    img.onload = () => {
+      const imgWidth = img.naturalWidth;
+      const windowWidth = window.innerWidth;
+      let sizeClass = '';
+
+      if (imgWidth > windowWidth * 0.8) {
+        sizeClass = 'modal-xl';
+      } else if (imgWidth > windowWidth * 0.5) {
+        sizeClass = 'modal-lg';
+      }
+
+      const content = `
+        <figure class="text-center">
+          <img src="${src}" alt="Изображение" class="img-fluid">
+        </figure>
+      `;
+      this.showModal(content, sizeClass);
+    };
+    img.src = src;
   },
 
   // Открыть файл (PDF, DOCX, PPTX и т.д.)

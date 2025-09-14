@@ -54,8 +54,17 @@ const Shortcodes = {
   parseFile(text) {
     return text.replace(/\[file:([^\]]+)\]/g, (match, path) => {
       const fileName = path.split('/').pop();
+      const fileExt = fileName.split('.').pop().toLowerCase();
+      const imageExtensions = ['png', 'jpg', 'jpeg', 'gif', 'svg', 'webp'];
+
+      if (imageExtensions.includes(fileExt)) {
+        return `<a href="#" class="btn btn-secondary" onclick="event.preventDefault(); Modals.openImage('${path}')">
+          <i class="bi bi-image me-2"></i> Открыть изображение: ${fileName}
+        </a>`;
+      }
+
       return `<a href="#" class="btn btn-secondary" onclick="event.preventDefault(); Modals.openFile('${path}')">
-        📄 Открыть файл: ${fileName}
+        <i class="bi bi-file-earmark-text-fill me-2"></i> Открыть файл: ${fileName}
       </a>`;
     });
   },
