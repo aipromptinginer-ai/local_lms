@@ -1,0 +1,138 @@
+/* Compact styles for a more dense interface */
+:root {
+    --font-size: 16px;
+    --spacing: 0.75rem;
+    --typography-spacing-vertical: 1rem;
+    --block-spacing-vertical: 1.5rem;
+    --form-element-spacing-vertical: 0.5rem;
+    --form-element-spacing-horizontal: 0.75rem;
+}
+
+
+
+
+
+
+
+
+
+/* Lesson item in course view */
+.lesson-item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lesson-item[data-disabled] {
+    opacity: 0.6;
+}
+
+.lesson-item[data-disabled] > a[role="button"] {
+    pointer-events: none;
+}
+
+.quiz-timer {
+    font-variant-numeric: tabular-nums;
+}
+
+.quiz-embed footer {
+    padding-top: 0;
+}
+
+.drag-container {
+    min-height: 100px;
+}
+.drag-item {
+    cursor: move;
+    display: block;
+}
+.drop-target {
+    border: 2px dashed #dee2e6;
+    transition: background-color 0.2s ease;
+}
+
+
+
+
+.sequence-item {
+    cursor: move;
+}
+
+.hotspot-container {
+    position: relative;
+    display: inline-block;
+    cursor: crosshair;
+}
+.hotspot-marker {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    border: 2px solid #fff;
+}
+.hotspot-marker.admin-marker {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.page-header hgroup {
+    margin-bottom: 0;
+}
+
+
+
+
+
+.quiz-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 1rem;
+}
+
+
+
+
+
+
+
+.option-item input[type="radio"],
+.option-item input[type="checkbox"] {
+    align-self: flex-start;
+}
+
+.option-item input[type="text"] {
+    flex-grow: 1;
+}
+
+
+
+.sequence-step-item input {
+    flex-grow: 1;
+}
+
+
+.dashboard-card .card-content {
+    flex-grow: 1; /* This makes the content area expand */
+}
+
+.dashboard-card h3 {
+    font-size: 1.1rem;
+}
+.dashboard-card p {
+    font-size: 0.9rem;
+}
+.dashboard-card .stat-number {
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+
+
+
+
